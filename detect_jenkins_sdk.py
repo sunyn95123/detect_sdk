@@ -42,7 +42,7 @@ if __name__ == '__main__':
             if name.endswith("DS_Store"):
                 continue
             os.remove(os.path.join(root, name))
-
+            
         for name in dirs:
             if name.endswith("DS_Store"):
                 continue
@@ -53,6 +53,3 @@ if __name__ == '__main__':
     if len(sys.argv) >= 2:
 
         get_AgoraSDK(file_path,sys.argv[1])
-    else:
-        print(sys.argv[1])
-        print("请输入版本号,如'v2.9.0.50'")

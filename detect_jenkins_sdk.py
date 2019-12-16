@@ -34,7 +34,7 @@ def get_AgoraSDK(file_path,downlod_addres):
 
 if __name__ == '__main__':
 
-    file_path = '/Users/labtest/workspace_git/AgoraRTCEngine-test/AutoBuild/sdks/'
+    file_path = '/Users/labtest/workspace/AgoraRTCEngine-test/AutoBuild/sdks/'
     """遍历清空文件夹"""
     for root, dirs, files in os.walk(file_path, topdown=False):
 

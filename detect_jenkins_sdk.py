@@ -17,7 +17,8 @@ def get_AgoraSDK(file_path,downlod_addres):
         local_addres = str(downlod_addres).split("/")[-1]
 
         print(local_addres)
-        urllib.request.urlretrieve(downlod_addres, local_addres)
+        urllib.request.urlretrieve(downlod_addres, file_path+local_addres)
+        print(file_path+local_addres)
         """解压zip"""
         zip_file = zipfile.is_zipfile(file_path+local_addres)
         if zip_file:
@@ -36,9 +37,15 @@ if __name__ == '__main__':
     file_path = '/Users/labtest/workspace_git/AgoraRTCEngine-test/AutoBuild/sdks/'
     """遍历清空文件夹"""
     for root, dirs, files in os.walk(file_path, topdown=False):
+
         for name in files:
+            if name.endswith("DS_Store"):
+                continue
             os.remove(os.path.join(root, name))
+
         for name in dirs:
+            if name.endswith("DS_Store"):
+                continue
             os.rmdir(os.path.join(root, name))
     sleep(2)
     if len(sys.argv) >=3:

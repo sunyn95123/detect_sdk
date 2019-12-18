@@ -1,7 +1,7 @@
 import os
 
 
-file_path = '/Users/labtest/workspace/AgoraRTCEngine-test/AutoBuild/Results/'
+file_path = '/Users/labtest/workspace_git/AgoraRTCEngine-test/AutoBuild/Results/'
 """遍历清空文件夹"""
 for root, dirs, files in os.walk(file_path, topdown=False):
 

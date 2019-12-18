@@ -4,8 +4,6 @@ import os
 import sys
 from urllib import request
 import urllib
-import re
-import datetime
 import zipfile
 from time import sleep
 """
@@ -27,17 +25,27 @@ if __name__ == '__main__':
 
     file_path = '/Users/labtest/workspace_git/AgoraRTCEngine-test/AutoBuild/sdks/'
     """遍历清空文件夹"""
-    for root, dirs, files in os.walk(file_path, topdown=False):
+    for i in range(10):
+        while True:
+            try:
+                for root, dirs, files in os.walk(file_path, topdown=False):
 
-        for name in files:
-            if name.endswith("DS_Store"):
+                    for name in files:
+                        if name.endswith("DS_Store"):
+                            continue
+                        os.remove(os.path.join(root, name))
+                    for name in dirs:
+                        if name.endswith("DS_Store"):
+                            continue
+                        os.rmdir(os.path.join(root, name))
+            except Exception as e:
                 continue
-            os.remove(os.path.join(root, name))
-            
-        for name in dirs:
-            if name.endswith("DS_Store"):
-                continue
-            os.rmdir(os.path.join(root, name))
+            break
+
+
+
+
+
     sleep(2)
     if len(sys.argv) >=3:
         file_path = sys.argv[2]

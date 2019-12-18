@@ -50,8 +50,4 @@ if __name__ == '__main__':
     if len(sys.argv) >=3:
         file_path = sys.argv[2]
     if len(sys.argv) >= 2:
-
         get_AgoraSDK(file_path,sys.argv[1])
-    else:
-        print(sys.argv[1])
-        print("请输入版本号,如'v2.9.0.50'")

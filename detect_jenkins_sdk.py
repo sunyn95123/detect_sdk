@@ -22,9 +22,9 @@ def get_AgoraSDK(file_path,downlod_addres):
         #     os.system('unzip -n -d /Users/labtest/workspace_git/AgoraRTCEngine-test/AutoBuild/sdks {}'.format(
         #                 file_path+local_addres))
             fz = zipfile.ZipFile(file_path + local_addres, 'r')
-            if 'SDK_for_Mac' in str(local_addres):
-                os.system('unzip -n -d /Users/labtest/workspace_git/AgoraRTCEngine-test/AutoBuild/sdks {}'.format(
-                    file_path + local_addres))
+            if 'SDK_for_Mac' in str(file_path+info_name[-1][0]):
+                os.system('unzip -n -d {}/sdks {}'.format(
+                    os.path.split(os.path.realpath(__file__))[0],file_path+info_name[-1][0]))
             else:
                 for file in fz.namelist():
                     fz.extract(file, file_path)
@@ -33,7 +33,7 @@ def get_AgoraSDK(file_path,downlod_addres):
 
 if __name__ == '__main__':
 
-    file_path = '/Users/labtest/workspace_git/AgoraRTCEngine-test/AutoBuild/sdks/'
+    file_path = os.path.split(os.path.realpath(__file__))[0] + '/' + 'sdks/'
     """遍历清空文件夹"""
     for i in range(10):
         while True:

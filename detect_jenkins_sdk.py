@@ -19,12 +19,10 @@ def get_AgoraSDK(file_path,downlod_addres):
         """解压zip"""
         zip_file = zipfile.is_zipfile(file_path+local_addres)
         if zip_file:
-        #     os.system('unzip -n -d /Users/labtest/workspace_git/AgoraRTCEngine-test/AutoBuild/sdks {}'.format(
-        #                 file_path+local_addres))
             fz = zipfile.ZipFile(file_path + local_addres, 'r')
-            if 'SDK_for_Mac' in str(file_path+info_name[-1][0]):
-                os.system('unzip -n -d {}/sdks {}'.format(
-                    os.path.split(os.path.realpath(__file__))[0],file_path+info_name[-1][0]))
+            if 'SDK_for_Mac' in str(local_addres):
+                os.system('unzip -n -d ~/workspace/AgoraRTCEngine-test/AutoBuild/sdks_path {}'.format(
+                    file_path + local_addres))
             else:
                 for file in fz.namelist():
                     fz.extract(file, file_path)
@@ -33,12 +31,16 @@ def get_AgoraSDK(file_path,downlod_addres):
 
 if __name__ == '__main__':
 
-    file_path = os.path.split(os.path.realpath(__file__))[0] + '/' + 'sdks/'
-    """遍历清空文件夹"""
+    print(len(sys.argv))
+    print(sys.argv[1])
+    if len(sys.argv) >=2:
+        clear_file_path = '/Users/labtest/workspace/AgoraRTCEngine-test/AutoBuild/sdks_path/'
+
+        """遍历清空文件夹"""
     for i in range(10):
         while True:
             try:
-                for root, dirs, files in os.walk(file_path, topdown=False):
+                for root, dirs, files in os.walk(clear_file_path, topdown=False):
 
                     for name in files:
                         if name.endswith("DS_Store"):
@@ -51,13 +53,7 @@ if __name__ == '__main__':
             except Exception as e:
                 continue
             break
+        sleep(1)
+    get_AgoraSDK(clear_file_path,sys.argv[1])
 
 
-
-
-
-    sleep(2)
-    if len(sys.argv) >=3:
-        file_path = sys.argv[2]
-    if len(sys.argv) >= 2:
-        get_AgoraSDK(file_path,sys.argv[1])
